@@ -612,3 +612,9 @@ for ($i=0;$i<$days;$i++) {
 var_dump($interval);
 var_dump($days);
 echo $players;
+echo "<hr/>";
+echo "123";
+$mem = new Memcache; //创建Memcache对象
+$mem->connect("127.0.0.1", 11211); //连接Memcache服务器
+var_dump("1111");
+var_dump($mem->get('26npo1qjt2a1iksfq2bbubffr6'));   // f4oi3gkal46t1vbb8kd98srff3 必须换成你上面取得的session_id

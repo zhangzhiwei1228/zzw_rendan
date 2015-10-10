@@ -237,4 +237,29 @@ foreach($arr as $number) {
 
 echo "<hr/>";
 echo realpath("../");//输出真是的路径
+echo "<hr/>";
+$memcache = new Memcache;
+$memcache->connect('localhost', 11211) or die("Could not connect");
 
+$memcache->set('key', 'This is a test!', 0, 60);
+$val = $memcache->get('key');
+echo $val;
+
+
+$mem = new Memcache; //创建Memcache对象
+$mem->connect("127.0.0.1", 11211); //连接Memcache服务器
+
+$val = "这是一个Memcache的测试.";
+$key = md5($val);
+$mem->set($key, $val, 0, 120); //增加插入一条缓存，缓存时间为120s
+
+if(($k = $mem->get('key'))){ //判断是否获取到指定的key
+    echo 'from cache:'.$k;
+} else {
+    echo 'normal'; //这里我们在实际使用中就需要替换成查询数据库并创建缓存.
+}
+
+echo "<hr/>";
+session_start();
+$_SESSION["UserID"]=123;
+echo session_id();//26npo1qjt2a1iksfq2bbubffr6
