@@ -667,4 +667,5 @@ echo "<img src='test12.jpg'>";
 
 
 echo "<hr/>";
+//ceshigit
 ?>
